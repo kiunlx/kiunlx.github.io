@@ -173,7 +173,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装jenkins"><a href="#安装jenkins" class="headerlink" title="安装jenkins"></a>安装jenkins</h2><p>1.使用docker安装jenkins，pull一个jenkins。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 7007:8080 -v /home/ubuntu/jenkins:/var/jenkins_home --name jenkins jenkins</span><br></pre></td></tr></table></figure></p>
-<p>启动一个jenkins服务<br>2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。<br>3.安装插件，配置插件安装不上时，一般都是版本不对。这时候手动安装，下载插件地址：<a href="http://updates.jenkins-ci.org/download/plugins/" target="_blank" rel="noopener">http://updates.jenkins-ci.org/download/plugins/</a><br>4.然后配置从节点，节点配置成SSH连接。需要安装SSH-slave<br>5.从节点配置maven构建代码的时候需要设置jdk，jdk需要从<br>系统管理-Global Tool Configuration路径下设置，jdk不要设置成自动安装。</p>
+<p>启动一个jenkins服务<br>2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。<br>3.安装插件，配置插件安装不上时，一般都是版本不对。这时候手动安装，下载插件地址：<a href="http://updates.jenkins-ci.org/download/plugins/" target="_blank" rel="noopener">http://updates.jenkins-ci.org/download/plugins/</a><br>4.然后配置从节点，节点配置成SSH连接。需要安装SSH-slave<br>5.从节点配置maven构建代码的时候需要设置jdk，jdk需要从<br>系统管理-Global Tool Configuration路径下设置，jdk不要设置成自动安装。<br>6.shell动态杀死进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep procedure_name | grep -v grep | awk bcms-0.0.1-SNAPSHOT.jar | xargs kill -9</span><br></pre></td></tr></table></figure></p>
 
       
 
