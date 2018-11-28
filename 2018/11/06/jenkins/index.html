@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="安装jenkins1.使用docker安装jenkins，pull一个jenkins。1sudo docker run -d -p 7007:8080 -v /home/ubuntu/jenkins:/var/jenkins_home --name jenkins jenkins 启动一个jenkins服务2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。3.安装插件，配置插件安装不上时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-06T02:42:24.015Z">
+<meta property="og:updated_time" content="2018-11-28T03:05:22.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins">
 <meta name="twitter:description" content="安装jenkins1.使用docker安装jenkins，pull一个jenkins。1sudo docker run -d -p 7007:8080 -v /home/ubuntu/jenkins:/var/jenkins_home --name jenkins jenkins 启动一个jenkins服务2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。3.安装插件，配置插件安装不上时">
@@ -176,7 +176,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装jenkins"><a href="#安装jenkins" class="headerlink" title="安装jenkins"></a>安装jenkins</h2><p>1.使用docker安装jenkins，pull一个jenkins。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 7007:8080 -v /home/ubuntu/jenkins:/var/jenkins_home --name jenkins jenkins</span><br></pre></td></tr></table></figure></p>
-<p>启动一个jenkins服务<br>2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。<br>3.安装插件，配置插件安装不上时，一般都是版本不对。这时候手动安装，下载插件地址：<a href="http://updates.jenkins-ci.org/download/plugins/" target="_blank" rel="noopener">http://updates.jenkins-ci.org/download/plugins/</a><br>4.然后配置从节点，节点配置成SSH连接。需要安装SSH-slave<br>5.从节点配置maven构建代码的时候需要设置jdk，jdk需要从<br>系统管理-Global Tool Configuration路径下设置，jdk不要设置成自动安装。<br>6.shell动态杀死进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep procedure_name | grep -v grep | awk bcms-0.0.1-SNAPSHOT.jar | xargs kill -9</span><br></pre></td></tr></table></figure></p>
+<p>启动一个jenkins服务<br>2.启动服务后，进入系统，密码在输入框上面提示的那个目录下。<br>3.安装插件，配置插件安装不上时，一般都是版本不对。这时候手动安装，下载插件地址：<a href="http://updates.jenkins-ci.org/download/plugins/" target="_blank" rel="noopener">http://updates.jenkins-ci.org/download/plugins/</a><br>4.然后配置从节点，节点配置成SSH连接。需要安装SSH-slave<br>5.从节点配置maven构建代码的时候需要设置jdk，jdk需要从<br>系统管理-Global Tool Configuration路径下设置，jdk不要设置成自动安装。<br>6.shell动态杀死进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BUILD_ID=DONTKILLME</span><br><span class="line">cd /home/ubuntu/program/git_fpds/bmcs_java</span><br><span class="line">git pull</span><br><span class="line">mvn package</span><br><span class="line">ps -ef | grep bcms-0.0.1-SNAPSHOT.jar | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill -9</span><br><span class="line">cd target</span><br><span class="line">nohup java -jar bcms-0.0.1-SNAPSHOT.jar&gt;temp.log &amp;</span><br></pre></td></tr></table></figure></p>
+<p>####BUILD_ID=DONTKILLME表示关闭页面不会杀死jenkins的进程</p>
 
       
 
@@ -388,11 +389,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
             
             <div class="clearfix"></div>
